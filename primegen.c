@@ -17,6 +17,10 @@
 //           https://github.com/kimwalisch/primesieve/
 
 
+#define DBG_FFL {printf("DBG: File:[%s] Func:[%s] Line:[%d]\n",\
+                 __FILE__, __FUNCTION__, __LINE__);fflush(stdout);}
+
+
 //------------------------------------------------------------------------------
 typedef struct
 thrInfo_st {
@@ -139,6 +143,7 @@ printCfg()
 	printf("\tthrPrimeLoops    : %d\n",        cfg.thrPrimeLoops);
 	printf("\tthrPrimesPerLoop : %d\n",        cfg.thrPrimesPerLoop);
 	printf("\n");
+	fflush(stdout);
 }
 
 //------------------------------------------------------------------------------
@@ -174,7 +179,7 @@ cliOptsToCfg(int argc, char *argv[])
   int  opt;
   bool hasErr = false;
 
-  while ((opt = getopt(argc, argv, ":h:o:b:e:t:l:p")) != -1)
+  while ((opt = getopt(argc, argv, ":h:o:b:e:t:l:p:")) != -1)
   {
     switch(opt)
     {
